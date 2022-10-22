@@ -2,11 +2,7 @@ const categoryModel = require("../models/category");
 
 const categoryService = {
   async getCategories(userId, type) {
-    return categoryModel
-      .find({
-        $and: [{ associatedUser: userId }, { categoryType: type }],
-      })
-      .lean();
+    return categoryModel.find({ $and: [{ associatedUser: userId }, { categoryType: type }] }).lean();
   },
   async getCategory(id) {
     return categoryModel.find({ _id: id });
