@@ -32,15 +32,14 @@ const AuthService = {
   },
   async signup(_user) {
     try {
-      const user = await userService.create(_user);
+      const user = await userService.createUser(_user);
       const accessToken = this.createSession(user);
       delete user.password;
-      return { result: true, user, accessToken };
+      return { user, accessToken };
     } catch (e) {
       if (e.code === 11000) {
         throw new Error("Ya existe una cuenta asociada a éste correo electrónico");
       }
-      console.log(e.message);
       throw e;
     }
   },

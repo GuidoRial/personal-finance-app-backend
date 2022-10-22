@@ -8,6 +8,6 @@ module.exports = {
     secret: process.env.SESSIONS_JWT_SECRET || "12345678965432123456789876543212345678987654321234567898a",
   },
   mongodb: {
-    uri: process.env.MONGODB_URI || "mongodb+srv://guidorial:wreads123@cluster0.9k5vopo.mongodb.net/?retryWrites=true&w=majority",
+    uri: process.env.MONGODB_URI,
   },
 };
