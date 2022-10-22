@@ -15,7 +15,6 @@ const userService = {
         throw new Error("Debes proveer una contraseña para éste usuario");
       } else {
         const hashedPassword = await argon2.hash(userData.password);
-        console.log(hashedPassword);
         userData.password = hashedPassword;
       }
 

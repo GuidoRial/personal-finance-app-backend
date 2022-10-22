@@ -1,5 +1,4 @@
 const controllers = require("../controllers");
-const middlewares = require("../middlewares");
 
 function authenticationRoutes(app) {
   app.post("/api/auth/login", controllers.auth.authenticate);

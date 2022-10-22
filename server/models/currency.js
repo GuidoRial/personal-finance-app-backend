@@ -5,7 +5,7 @@ const currencySchema = new Schema({
     type: String,
     required: true,
   },
-  value: {
+  name: {
     type: String,
     required: true,
   },
