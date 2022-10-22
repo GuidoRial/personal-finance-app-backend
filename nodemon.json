@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "ignore": ["*.test.js", "node_modules/*", "database", "data/*"],
+  "execMap": {
+    "js": "node --max-old-space-size=8192 --inspect=9231 app.js"
+  }
+}
