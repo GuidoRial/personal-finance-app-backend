@@ -1,6 +1,15 @@
 const categoryService = require("../../service/category");
 
 module.exports = {
+  async get(req, res) {
+    try {
+      const { id } = req.params;
+      const category = await categoryService.getCategory(id);
+      return res.status(200).json({ category });
+    } catch (e) {
+      return res.status(400).json({ message: e.message, stack: e.stack });
+    }
+  },
   async getAll(req, res) {
     try {
       const { type } = req.query;
