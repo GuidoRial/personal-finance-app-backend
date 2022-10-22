@@ -10,11 +10,6 @@ const categorySchema = new Schema({
     enum: ["expense", "income"],
     required: true,
   },
-  currency: {
-    type: Schema.Types.ObjectId,
-    ref: "Currency",
-    required: true,
-  },
   associatedUser: {
     type: Schema.Types.ObjectId,
     ref: "User",
