@@ -9,6 +9,9 @@ const categoryService = {
   async createCategory(category) {
     return categoryModel.create(category);
   },
+  async editCategory(id, category) {
+    return categoryModel.updateOne({ _id: id }, category);
+  },
   async deleteCategory(id) {
     return categoryModel.deleteOne({ _id: id });
   },
