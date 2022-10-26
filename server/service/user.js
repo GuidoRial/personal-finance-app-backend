@@ -2,6 +2,12 @@ const argon2 = require("argon2");
 const userModel = require("../models/user");
 
 const userService = {
+  getUsernames() {
+    return userModel.find({}, { username: 1 });
+  },
+  getEmails() {
+    return userModel.find({}, { email: 1 });
+  },
   getByEmail(email, { getPassword } = { getPassword: false }) {
     let projection = {};
     if (!getPassword) {

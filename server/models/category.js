@@ -7,7 +7,7 @@ const categorySchema = new Schema({
   },
   categoryType: {
     type: String,
-    enum: ["expense", "income"],
+    enum: ["expense", "income", "remittance"],
     required: true,
   },
   associatedUser: {

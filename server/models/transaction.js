@@ -23,7 +23,12 @@ const transactionSchema = new Schema({
     type: Date,
     required: true,
   },
-  wallet: {
+  senderWallet: {
+    type: Schema.Types.ObjectId,
+    ref: "Wallet",
+    required: true,
+  },
+  receiverWallet: {
     type: Schema.Types.ObjectId,
     ref: "Wallet",
     required: true,

@@ -17,6 +17,10 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+    transactions: {
+      type: Array,
+      default: [],
+    },
   },
   { timestamps: true, strict: true }
 );
