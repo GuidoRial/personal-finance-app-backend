@@ -26,7 +26,7 @@ const userSchema = new Schema(
       ],
       default: [],
     },
-    wallets: {
+    holdings: {
       type: [
         {
           type: Schema.Types.ObjectId,
