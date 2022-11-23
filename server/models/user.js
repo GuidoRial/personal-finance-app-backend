@@ -18,7 +18,12 @@ const userSchema = new Schema(
       unique: true,
     },
     transactions: {
-      type: Array,
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Transaction",
+        },
+      ],
       default: [],
     },
   },
