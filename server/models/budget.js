@@ -7,8 +7,7 @@ const budgetSchema = new Schema({
   },
   description: String,
   currency: {
-    type: Schema.Types.ObjectId,
-    ref: "Currency",
+    type: String,
     required: true,
   },
   expenses: [

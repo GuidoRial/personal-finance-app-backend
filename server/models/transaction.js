@@ -15,8 +15,7 @@ const transactionSchema = new Schema({
     required: true,
   },
   currency: {
-    type: Schema.Types.ObjectId,
-    ref: "Currency",
+    type: String,
     required: true,
   },
   date: {

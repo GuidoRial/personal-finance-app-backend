@@ -1,4 +1,4 @@
-const walletModel = require("../models/wallet");
+const walletModel = require("../models/holding");
 
 const WalletService = {
   async getWallets(userId, currencyId, type) {

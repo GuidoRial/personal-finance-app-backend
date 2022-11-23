@@ -26,6 +26,15 @@ const userSchema = new Schema(
       ],
       default: [],
     },
+    wallets: {
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Wallet",
+        },
+      ],
+      default: [],
+    },
   },
   { timestamps: true, strict: true }
 );

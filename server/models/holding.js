@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
-const walletSchema = new Schema({
-  title: {
+const holding = new Schema({
+  name: {
     type: String,
     required: true,
   },
@@ -13,21 +13,23 @@ const walletSchema = new Schema({
     type: Number,
     required: true,
   },
-  walletType: {
-    type: String,
-    enum: ["cash", "bank account", "crypto"],
+  isWallet: {
+    type: Boolean,
     required: true,
+  },
+  holdingType: {
+    type: String,
+    enum: ["cash", "bank account", "crypto", "budgetPlan"],
   },
   associatedUser: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
   currency: {
-    type: Schema.Types.ObjectId,
-    ref: "Currency",
+    type: String,
     required: true,
   },
 });
-const walletModel = model("Wallet", walletSchema, "wallets");
+const walletModel = model("Holding", holding, "holdings");
 
 module.exports = walletModel;
