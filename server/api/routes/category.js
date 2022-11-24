@@ -1,7 +1,7 @@
 const controllers = require("../controllers");
 const middlewares = require("../middlewares");
 
-function currencyRoutes(app) {
+function categoriesRoutes(app) {
   app.get("/api/category/:id", middlewares.isAuth, controllers.category.get);
   app.get("/api/categories", middlewares.isAuth, controllers.category.getAll);
   app.post("/api/category", middlewares.isAuth, controllers.category.createCategory);
@@ -9,4 +9,4 @@ function currencyRoutes(app) {
   app.delete("/api/category/:id", middlewares.isAuth, controllers.category.deleteCategory);
 }
 
-module.exports = currencyRoutes;
+module.exports = categoriesRoutes;
