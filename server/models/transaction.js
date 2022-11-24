@@ -1,43 +1,41 @@
-const { Schema, model } = require("mongoose");
+const { Schema } = require("mongoose");
 
-const transactionSchema = new Schema({
-  amount: {
-    type: Number,
-    required: true,
+const transactionSchema = new Schema(
+  {
+    amount: {
+      type: Number,
+      required: true,
+    },
+    currency: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      enum: ["deposit", "transfer", "withdrawal"],
+      required: true,
+    },
+    description: {
+      type: String,
+    },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+    },
+    date: {
+      type: Date,
+      required: true,
+    },
+    sender: {
+      type: String,
+      enum: ["wallet", "saving", "budget"]
+    },
+    receiver: {
+      type: String,
+      enum: ["wallet", "saving", "budget"]
+    },
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  category: {
-    type: Schema.Types.ObjectId,
-    ref: "Category",
-    required: true,
-  },
-  currency: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-    required: true,
-  },
-  senderHolding: {
-    type: Schema.Types.ObjectId,
-    ref: "Holding",
-    required: true,
-  },
-  receiverHolding: {
-    type: Schema.Types.ObjectId,
-    ref: "Holding",
-    required: true,
-  },
-  associatedUser: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
-});
+  { _id: false }
+);
 
-const transactionModel = model("Transaction", transactionSchema, "transactions");
-
-module.exports = transactionModel;
+module.exports = transactionSchema

@@ -17,24 +17,41 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+    currencies: {
+      type: Array,
+      default: ["USD", "USDT", "ARS"]
+    },
+    wallets: {
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Wallet",
+        },
+      ],
+      default: [],
+    },
+    budgets: {
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Budget",
+        },
+      ],
+      default: [],
+    },
+    savings: {
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Saving",
+        },
+      ],
+      default: [],
+    },
     transactions: {
-      type: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "Transaction",
-        },
-      ],
-      default: [],
-    },
-    holdings: {
-      type: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "Holding",
-        },
-      ],
-      default: [],
-    },
+      type: Schema.Types.ObjectId,
+      ref: "Transactions"
+    }
   },
   { timestamps: true, strict: true }
 );
