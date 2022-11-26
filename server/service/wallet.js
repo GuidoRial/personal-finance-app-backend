@@ -24,6 +24,13 @@ const WalletService = {
       throw e;
     }
   },
+  async updateWallet(id, wallet) {
+    try {
+      return walletModel.updateOne({ _id: id }, wallet);
+    } catch (e) {
+      throw e;
+    }
+  },
 };
 
 module.exports = WalletService;

@@ -4,7 +4,7 @@ const middlewares = require("../middlewares");
 function walletRoutes(app) {
   app.post("/api/wallet", middlewares.isAuth, controllers.wallet.createWallet);
   app.get("/api/wallets", middlewares.isAuth, controllers.wallet.getWallets);
-
+  app.put("/api/wallet/:id", middlewares.isAuth, controllers.wallet.updateWallet)
 }
 
 module.exports = walletRoutes;

@@ -33,12 +33,21 @@ module.exports = {
   },
   async getWallets(req, res) {
     try {
-      console.log(req.user._id);
       const wallets = await WalletService.getWallets(req.user._id);
-      console.log(wallets);
       return res.status(200).json({ result: wallets });
     } catch (e) {
-      throw e;
+      return res.status(400).json({ message: e.message, stack: e.stack });
+    }
+  },
+  async updateWallet(req, res) {
+    try {
+      const updatedWallet = await WalletService.updateWallet(
+        req.params.id,
+        req.body
+      );
+      return res.status(200).json({ result: updatedWallet });
+    } catch (e) {
+      return res.status(400).json({ message: e.message, stack: e.stack });
     }
   },
 };
