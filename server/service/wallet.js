@@ -24,9 +24,13 @@ const WalletService = {
       throw e;
     }
   },
-  async updateWallet(id, wallet) {
+  async updateWallet(id, data) {
     try {
-      return walletModel.updateOne({ _id: id }, wallet);
+      const identifier = { _id: id };
+      const update = {
+        $set: { name: data.name, description: data.description },
+      };
+      return walletModel.updateOne(identifier, update);
     } catch (e) {
       throw e;
     }
