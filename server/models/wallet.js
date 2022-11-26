@@ -9,9 +9,13 @@ const wallet = new Schema({
   identifier: {
     identifierType: {
       type: String,
-      enum: ["address", "CBU"]
+      // enum: ["address", "CBU", "CVU", "alias"],
     },
-    value: String
+    value: String,
+  },
+  isPhysicalWallet: {
+    type: Boolean,
+    required: true,
   },
   currency: {
     type: String,
