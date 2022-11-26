@@ -31,4 +31,14 @@ module.exports = {
       return res.status(400).json({ message: e.message, stack: e.stack });
     }
   },
+  async getWallets(req, res) {
+    try {
+      console.log(req.user._id);
+      const wallets = await WalletService.getWallets(req.user._id);
+      console.log(wallets);
+      return res.status(200).json({ result: wallets });
+    } catch (e) {
+      throw e;
+    }
+  },
 };

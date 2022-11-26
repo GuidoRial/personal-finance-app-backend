@@ -5,6 +5,13 @@ const userService = {
   getUserById(id) {
     return userModel.find({ _id: id });
   },
+  getByEmail(email, { getPassword } = { getPassword: false }) {
+    let projection = { wallets: 0, budgets: 0, savings: 0 };
+    if (!getPassword) {
+      projection.password = 0;
+    }
+    return userModel.findOne({ email }, projection).lean();
+  },
   async createUser(userData) {
     try {
       if (!userData.password) {

@@ -17,6 +17,13 @@ const WalletService = {
       throw e;
     }
   },
+  async getWallets(id) {
+    try {
+      return walletModel.find({ associatedUser: id });
+    } catch (e) {
+      throw e;
+    }
+  },
 };
 
 module.exports = WalletService;
