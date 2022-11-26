@@ -12,7 +12,10 @@ const AuthService = {
       delete user.password;
       return { result: true, accessToken, user };
     } else {
-      return { result: false, message: "Mala combinación de usuario y contraseña" };
+      return {
+        result: false,
+        message: "Mala combinación de usuario y contraseña",
+      };
     }
   },
   createSession(user) {
@@ -38,7 +41,9 @@ const AuthService = {
       return { user, accessToken };
     } catch (e) {
       if (e.code === 11000) {
-        throw new Error("Ya existe una cuenta asociada a éste correo electrónico");
+        throw new Error(
+          "Ya existe una cuenta asociada a éste correo electrónico"
+        );
       }
       throw e;
     }

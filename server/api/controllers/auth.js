@@ -3,7 +3,6 @@ const AuthService = require("../../service/auth");
 module.exports = {
   async authenticate(req, res) {
     try {
-      console.log(req.body)
       const { email, password } = req.body;
       const authenticationResult = await AuthService.authenticate(email, password);
       if (!authenticationResult) {
