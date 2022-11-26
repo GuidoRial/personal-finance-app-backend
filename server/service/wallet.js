@@ -42,6 +42,31 @@ const WalletService = {
       throw e;
     }
   },
+  async transferFromWalletToWallet(
+    sender,
+    receiver,
+    senderNewBalance,
+    receiverNewBalance
+  ) {
+    try {
+      const senderIdentifier = { _id: sender };
+      const receiverIdentifier = { _id: receiver };
+      const senderUpdate = {
+        $set: { balance: senderNewBalance },
+      };
+      const receiverUpdate = {
+        $set: { balance: receiverNewBalance },
+      };
+
+      const transferPromises = [
+        walletModel.updateOne(senderIdentifier, senderUpdate),
+        walletModel.updateOne(receiverIdentifier, receiverUpdate),
+      ];
+      return Promise.all(transferPromises);
+    } catch (e) {
+      throw e;
+    }
+  },
 };
 
 module.exports = WalletService;

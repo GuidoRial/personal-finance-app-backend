@@ -51,4 +51,22 @@ module.exports = {
       return res.status(400).json({ message: e.message, stack: e.stack });
     }
   },
+  async transfer(req, res) {
+    try {
+      const { receiverWalletId, senderNewBalance, receiverNewBalance } =
+        req.body;
+      const senderWalletId = req.params.id;
+
+      const walletUpdates = await WalletService.transferFromWalletToWallet(
+        senderWalletId,
+        receiverWalletId,
+        senderNewBalance,
+        receiverNewBalance
+      );
+
+      return res.status(200).json({ result: walletUpdates });
+    } catch (e) {
+      return res.status(400).json({ message: e.message, stack: e.stack });
+    }
+  },
 };
