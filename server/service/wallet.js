@@ -31,6 +31,13 @@ const WalletService = {
       throw e;
     }
   },
+  async deleteWallet(id) {
+    try {
+      return walletModel.deleteOne({ _id: id });
+    } catch (e) {
+      throw e;
+    }
+  },
 };
 
 module.exports = WalletService;
